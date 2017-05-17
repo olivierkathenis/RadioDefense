@@ -5,7 +5,7 @@ class Mur
 {
 	constructor(x,y,type)
 	{
-		this.sprite = game.add.sprite(x , y, 'mur');
+		this.sprite = game.add.sprite(x , y, 'radiosheets');
     this.sprite.anchor.set(.5, .5);
     game.physics.arcade.enable(this.sprite);
     this.Maxlife = 30;

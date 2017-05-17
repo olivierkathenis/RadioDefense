@@ -13,6 +13,7 @@ PlayState.preload = function () {
     game.load.image("canon", GLOBAL.DIR.IMAGE + "canon.png");
     game.load.image("mur", GLOBAL.DIR.IMAGE + "muraille-v1.png");
     game.load.spritesheet("radiosheets", GLOBAL.DIR.IMAGE + "tileset.png", 16, 20, 0, 0);
+    
 }
 
 PlayState.create = function () {
@@ -45,7 +46,7 @@ PlayState.create = function () {
     let mur1 = new Mur(300,300, 'mur');
     console.log(mur1);
 
-    console.log(map.tilesets[0])
+        
 
 }
 
