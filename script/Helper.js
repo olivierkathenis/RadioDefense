@@ -234,7 +234,12 @@ var Helper = {
                     groups[name] = group;
                 })
                 return groups;
+            },
+            drawPoint: function (position, color = 0xFFDD00) {
+                let graphics = game.add.graphics(position.x, position.y);
+                graphics.beginFill(color);
+                graphics.drawCircle(0, 0, 4);
             }
         }
     }
-    ;
+;

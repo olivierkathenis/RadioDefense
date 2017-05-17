@@ -1,27 +1,33 @@
 /**
  * Classe pour créer les bases des joueurs
  */
-class Base
-{
-	constructor(x,y)
-	{
-		this.sprite = game.add.sprite(x , y, 'base');
-    	game.physics.arcade.enable(this.sprite);
-    	this.sprite.anchor.set(0.5, 0.5);
+class Base {
+    constructor(position) {
 
-    	this.Maxlife = 100;
-	}
+        this.position = position;
 
-	getLife(damage)
-	{
-		this.Maxlife -= damage;
-		console.log(this.Maxlife);
-	}
 
-	addLife(bonus)
-	{
-		this.Maxlife += bonus;
-		console.log(this.Maxlife);
-	}
+        this.maxlife = 100;
+        this.life = this.maxlife;
 
+        this.sprite = game.add.sprite(this.position.x, this.position.y, 'base');
+
+        game.physics.arcade.enable(this.sprite);
+
+        this.sprite.anchor.set(0.5, 0.5);
+
+        this.canon = new Canon(this.position);
+    }
+
+    getLife(damage) {
+        this.Maxlife -= damage;
+        this.Maxlife -= damage;
+    }
+
+    addLife(bonus) {
+        this.Maxlife += bonus;
+    }
+    getCanon(){
+        return this.canon;
+    }
 }
