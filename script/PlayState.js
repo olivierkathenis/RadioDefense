@@ -11,6 +11,8 @@ PlayState.preload = function () {
     game.load.image("background", GLOBAL.DIR.IMAGE + "bg.png");
     game.load.image("base", GLOBAL.DIR.IMAGE + "base.png");
     game.load.image("canon", GLOBAL.DIR.IMAGE + "canon.png");
+    game.load.image("mur", GLOBAL.DIR.IMAGE + "muraille-v1.png");
+    game.load.spritesheet("radiosheets", GLOBAL.DIR.IMAGE + "tileset.png", 16, 20, 0, 0);
 }
 
 PlayState.create = function () {
@@ -38,14 +40,12 @@ PlayState.create = function () {
     let base3 = new Base(Groups.bases['base3'].centerX,Groups.bases['base3'].centerY);
     let base4 = new Base(Groups.bases['base4'].centerX,Groups.bases['base4'].centerY);
 
-    base1.getLife(30);
-    base2.getLife(10);
-
-    console.log(base2);
-    console.log(base1);
-    base1.addLife(10);
-    console.log(base1);
     let canon1 = new Canon(Groups.bases['base2'].centerX,Groups.bases['base2'].centerY);
+
+    let mur1 = new Mur(300,300, 'mur');
+    console.log(mur1);
+
+    console.log(map.tilesets[0])
 
 }
 
