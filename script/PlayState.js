@@ -6,34 +6,40 @@ let Groups = {};
 let cursors;
 
 PlayState.preload = function () {
-    // game.load.tilemap("map", "assets/images/mapfinal.json", null, Phaser.Tilemap.TILED_JSON);
-    // game.load.image("car", "assets/images/car.png");
+    game.load.tilemap("map", GLOBAL.DIR.IMAGE + "map.json", null, Phaser.Tilemap.TILED_JSON);
+    game.load.image("tileset", GLOBAL.DIR.IMAGE + "tileset.png");
+    game.load.image("background", GLOBAL.DIR.IMAGE + "bg.png");
+    game.load.image("base", GLOBAL.DIR.IMAGE + "base.png");
+    game.load.image("canon", GLOBAL.DIR.IMAGE + "canon.png");
 }
 
 PlayState.create = function () {
 
     cursors = this.input.keyboard.createCursorKeys();
 
-    // map = game.add.tilemap('map');
-    // map.addTilesetImage('tiles');
+    game.add.sprite(-64, -64, 'background');
+
+    map = game.add.tilemap('map');
+    map.addTilesetImage('tileset');
 
     layers = {
-        // fond: map.createLayer('fond')
+        fond: map.createLayer('contour')
     };
 
-    // layers.fond.resizeWorld();
-
     // map.setCollisionBetween(1, 2000, true, layers.collisions);
+    Groups.bases = Helper.Phaser.addGroups(['base1','base2','base3','base4','centre'], 'objectLayer', map);
+    
+    // console.log(group);
 
-    // layers.collisions.alpha = 0;
-    // layers.mort.alpha = 0;
-
-    // Groups.zoneStart = this.game.add.group();
-    // Groups.zoneStart.enableBody = true;
-    // Groups.zoneStart.alpha = 0;
-    // Helper.Phaser.drawObjectInGroup('zoneStart', map, 'objectsLayer', Groups.zoneStart);
 
     // game.physics.arcade.enable(layers.mort);
+    let base1 = new Base(Groups.bases['base1'].centerX,Groups.bases['base1'].centerY);
+    let base2 = new Base(Groups.bases['base2'].centerX,Groups.bases['base2'].centerY);
+    let base3 = new Base(Groups.bases['base3'].centerX,Groups.bases['base3'].centerY);
+    let base4 = new Base(Groups.bases['base4'].centerX,Groups.bases['base4'].centerY);
+
+    let canon1 = new Canon(Groups.bases['base2'].centerX,Groups.bases['base2'].centerY);
+
 }
 
 PlayState.update = function () {
