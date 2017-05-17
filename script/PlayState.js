@@ -46,6 +46,14 @@ PlayState.create = function () {
     let mur1 = new Mur(300,300, 'mur');
     console.log(mur1);
 
+    base1.getLife(30);
+    base2.getLife(10);
+
+    console.log(base2);
+    console.log(base1);
+    base1.addLife(10);
+    console.log(base1);
+
         
 
 }
