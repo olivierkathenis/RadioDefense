@@ -1,3 +1,6 @@
+/**
+ * Classe pour créer les bases des joueurs
+ */
 class Base 
 {
 	constructor(x,y)
