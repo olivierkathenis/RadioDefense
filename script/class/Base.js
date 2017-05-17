@@ -11,4 +11,17 @@ class Base
 
     	this.Maxlife = 100;
 	}
+
+	getLife(damage)
+	{
+		this.Maxlife -= damage;
+		console.log(this.Maxlife);
+	}
+
+	addLife(bonus)
+	{
+		this.Maxlife += bonus;
+		console.log(this.Maxlife);
+	}
+
 }

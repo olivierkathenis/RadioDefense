@@ -38,6 +38,13 @@ PlayState.create = function () {
     let base3 = new Base(Groups.bases['base3'].centerX,Groups.bases['base3'].centerY);
     let base4 = new Base(Groups.bases['base4'].centerX,Groups.bases['base4'].centerY);
 
+    base1.getLife(30);
+    base2.getLife(10);
+
+    console.log(base2);
+    console.log(base1);
+    base1.addLife(10);
+    console.log(base1);
     let canon1 = new Canon(Groups.bases['base2'].centerX,Groups.bases['base2'].centerY);
 
 }
