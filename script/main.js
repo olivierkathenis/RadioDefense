@@ -100,6 +100,7 @@ var GAME_HEIGHT = 800;
 var turret;
 var bullet;
 var mouseTouchDown = false;
+var cursors;
 
 // Create a Phaser game instance
 var game = new Phaser.Game(
@@ -146,8 +147,11 @@ function create()
 	bullet.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetLaser);
 
 	bullet.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
+	bullet.scale.setTo(0.5, 0.5);
 
 	bullet.setAll('checkWorldBounds', true);
+
+	cursors = this.input.keyboard.createCursorKeys();
 }
 
 function resetLaser(bullet) {
@@ -178,6 +182,10 @@ function update()
 		{
 			touchUp();
 		}
+	}
+	if( cursors.left.isDown ){
+		turret.body.angularVelocity =-500;
+		//faire tourner le vaisseau
 	}
 }
 
