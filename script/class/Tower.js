@@ -1,5 +1,5 @@
 class Tower {
-    constructor(position, angle, offset) {
+    constructor(position, angle, offset, speed = 1) {
 
         this.position = position;
 
@@ -19,7 +19,7 @@ class Tower {
 
         this.sprite.body.immovable = true;
 
-        this.speed = .4;
+        this.speed = speed;
     }
 
     turn(direction) {
