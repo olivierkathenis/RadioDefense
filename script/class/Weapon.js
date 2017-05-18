@@ -70,7 +70,7 @@ class Weapon{
     hitBaseItem(base, item, bullet, itemSprite){
 
         let life = item.getDamage(bullet.damage);
-        
+
         console.log(life);
 
         if(!item.immortal && life <= 0){
