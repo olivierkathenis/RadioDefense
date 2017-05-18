@@ -9,6 +9,7 @@ let cursors;
 let spacebar;
 let canon1;
 let canon2;
+let text;
 
 PlayState.preload = function () {
     game.load.tilemap("map", GLOBAL.DIR.IMAGE + "map.json", null, Phaser.Tilemap.TILED_JSON);
@@ -66,6 +67,7 @@ PlayState.create = function () {
         base.setWeapon();
     }
 
+
     // let item1 = new Item(
     //     bases['base2'].cases[1].sprite.worldPosition.x,
     //     bases['base2'].cases[1].sprite.worldPosition.y,
@@ -103,6 +105,9 @@ PlayState.create = function () {
     };
     
     map.setCollisionBetween(1, 2000, true, layers.contour);
+
+   
+    
 }
 
 PlayState.update = function () {
@@ -120,7 +125,10 @@ PlayState.update = function () {
     if (spacebar.justDown) {
         bases['base1'].canon.shoot();
     }
-
+    bases['base1'].afficherVie();
+    bases['base2'].afficherVie();
+    bases['base3'].afficherVie();
+    bases['base4'].afficherVie();
      
 }
 
