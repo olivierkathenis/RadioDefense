@@ -28,13 +28,31 @@ class Base {
 
         this.cases = [];
 
+        this.items = {};
+
+        for(let key in ITEMS){
+            this.items[key] = new Item(key)
+        }
+
+        console.log(this.items);
+        this.selectedItem = ITEMS.TOUR;
+
         for(let i=0; i < 6; i++){
             this.cases[i] = new Case(position, (i * 30) + this.angle + 15, 115);
-            
-            console.log(this.cases[i].sprite);
+
+            this.cases[i].sprite.inputEnabled = true;
+            this.cases[i].sprite.input.pixelPerfectOver = true;
+            this.cases[i].sprite.input.useHandCursor = true;
+            this.cases[i].sprite.events.onInputDown.add(()=>{
+                console.log(this.selectedItem);
+            }, this);
         }
     }
     setWeapon(){
+        this.canon = new Canon(this.position);
+    }
+
+    newItem(){
         this.canon = new Canon(this.position);
     }
 
