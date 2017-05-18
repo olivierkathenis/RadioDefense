@@ -15,6 +15,8 @@ class Weapon{
             bullet.height = 16;
             bullet.body.collideWorldBounds = true;
             bullet.body.bounce.setTo(1, 1);
+            bullet.maxRebond = 3;
+            bullet.rebond = 0;
         }, this);
     }
 
@@ -32,11 +34,22 @@ class Weapon{
 
     update() {
         this.getBullets().forEach(bullet => {
-           game.physics.arcade.collide(bullet, layers.contour);
+           game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
+
            let towers = centres['centre'].towers;
+
            for (var i = 0; i < towers.length; i++) {
-               game.physics.arcade.collide(bullet, towers[i].sprite);
+               game.physics.arcade.collide(bullet, towers[i].sprite, this.hit.bind(this));
            }
+
         }, this);
+    }
+
+    hit(bullet){
+        bullet.rebond++;
+        if (bullet.rebond > bullet.maxRebond){
+            bullet.kill();
+            bullet.rebond = 0;
+        }
     }
 }
