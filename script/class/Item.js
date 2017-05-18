@@ -5,7 +5,7 @@ class Item
 {
 	constructor(x,y,type)
 	{
-		this.sprite = game.add.sprite(x , y, 'weeds');
+		this.sprite = game.add.sprite(x , y, 'candy');
     this.sprite.anchor.set(.5, .5);
     this.sprite.width = 32;
     this.sprite.height = 32;
