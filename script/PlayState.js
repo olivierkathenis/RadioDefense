@@ -64,45 +64,17 @@ PlayState.create = function () {
         base.setWeapon();
     }
 
-    // let mur1 = new Mur(300, 300, 'mur');
-
-    bases['base1'].getLife(30);
-    bases['base2'].getLife(10);
-
     layers = {
         contour: map.createLayer('contour')
     };
     
     map.setCollisionBetween(1, 2000, true, layers.contour);
-    // game.input.addMoveCallback(pointer => {
-    //     let angle = Helper.degreeTwoPoints(
-    //         bases['base1'].position,
-    //         new Vector(pointer.x, pointer.y)
-    //     );
-    //     bases['base1'].canon.setAngle(angle);
-    // }, this);
-    
-    // this.weapon.bullets.bounce.setTo(1, 1);
-
 }
 
 PlayState.update = function () {
 
-    // game.physics.arcade.collide(car.sprite, layers.collisions);
-    // game.physics.arcade.overlap(car.sprite, flag.sprite, (car_sprite, flag_sprite)=>{
-    //
-    // });
-
-    // if (game.input.mousePointer.isDown) {
-    //     bases['base1'].canon.shoot()
-    // }
-
-
     centres['centre'].update();
     bases['base1'].canon.update();
-
-
-
 
     if (cursors.left.isDown) {
         bases['base1'].canon.turn("left");

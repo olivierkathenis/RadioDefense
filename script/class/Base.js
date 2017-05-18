@@ -30,13 +30,19 @@ class Base {
 
         for(let i=0; i < 6; i++){
             this.cases[i] = new Case(position, (i * 30) + this.angle + 15, 115);
+            
+            console.log(this.cases[i].sprite);
         }
     }
     setWeapon(){
         this.canon = new Canon(this.position);
     }
 
-    getLife(damage) {
+    hit(){
+        
+    }
+
+    getDamage(damage) {
         this.maxlife -= damage;
     }
 
