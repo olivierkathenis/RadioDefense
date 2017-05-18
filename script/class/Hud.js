@@ -1,5 +1,7 @@
 class Hud {
-    constructor(position, angle) {
+    constructor(name, position, angle) {
+
+        this.name = name;
 
         this.position = position;
         this.angle = angle;
@@ -7,42 +9,61 @@ class Hud {
 
         console.log(this.angle);
 
-        this.nb = 4;
-        this.step = (this.size / this.nb);
-        this.margin = 32;
-
         this.buttons = {};
         this.buttonGroups = game.add.group();
 
-        let items = [ITEMS.WALL, ITEMS.ROCK, ITEMS.LIFE, ITEMS.REFLECT];
-        
-        for(let i=0; i < items.length; i++){
+        this.size = 24;
+        this.step = -50;
 
-            let pos = new Vector(
-                this.position.x - 16,
-                this.position.y - (this.size / 2) + (this.step * i) + this.margin
-            )
+        let text = game.add.text(position.x, position.y, this.name, {
+            font: "20px Arial",
+            fill: "#fff",
+            align: "left",
+            boundsAlignH: "top",
+            boundsAlignV: "top"
+        });
+        text.pivot.x = text.width / 2;
+        text.pivot.y = -3;
+        text.angle = this.angle;
 
-            let button = new Button(pos, items[i], this.angle);
+        //Wall
+        let wall = new Button(new Vector(
+            this.position.x,
+            this.position.y
+        ), ITEMS.WALL, this.angle, this.size, this.size);
 
-            let sprite = button.sprite;
+        wall.sprite.pivot.x = 200;
+        wall.sprite.pivot.y = -this.size - 5;
+        wall.sprite.angle = this.angle;
 
-            this.buttonGroups.add(sprite);
+        //Rock
+        let rock = new Button(new Vector(
+            this.position.x,
+            this.position.y
+        ), ITEMS.ROCK, this.angle, this.size, this.size);
+        rock.sprite.pivot.x = 145;
+        rock.sprite.pivot.y = -this.size - 5;
+        rock.sprite.angle = this.angle;
 
-            game.physics.arcade.enable(sprite);
+        //Life
+        let life = new Button(new Vector(
+            this.position.x,
+            this.position.y
+        ), ITEMS.LIFE, this.angle, this.size, this.size);
+        life.sprite.pivot.x = -145;
+        life.sprite.pivot.y = -this.size - 5;
+        life.sprite.angle = this.angle;
 
-            sprite.inputEnabled = true;
-            sprite.input.pixelPerfectOver = true;
-            sprite.input.useHandCursor = true;
-            sprite.events.onInputDown.add(()=>{
-                console.log(button.name);
-            }, this);
+        //Reflect
+        let reflect = new Button(new Vector(
+            this.position.x,
+            this.position.y
+        ), ITEMS.REFLECT, this.angle, this.size, this.size);
+        reflect.sprite.pivot.x = -200;
+        reflect.sprite.pivot.y = -this.size - 5;
+        reflect.sprite.angle = this.angle;
 
-            sprite.angle = this.angle;
-
-            this.buttons[items[i].name] = button;
-        }
-
-        this.buttonGroups.angle = 5;
+        //Save buttons
+        this.buttons = {wall: wall, rock: rock, life: life, reflect: reflect}
     }
 }

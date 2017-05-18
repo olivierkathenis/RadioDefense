@@ -7,8 +7,6 @@ class Centre{
 
         this.sprite.alpha = 1
 
-        Helper.Phaser.drawPoint(this.position, 0xFF0000)
-
         game.physics.arcade.enable(this.sprite);
 
         this.sprite.anchor.set(0.5, 0.5);

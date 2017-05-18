@@ -29,8 +29,6 @@ class Canon {
         this.sprite.angle = this.angle;
 
         this.weapon = new Weapon(this.sprite);
-
-        Helper.Phaser.drawPoint(this.position);
     }
 
     /**

@@ -4,9 +4,10 @@ class Button{
 
         this.position = position;
 
+        this.type = item.name.toUpperCase();
         this.name = item.name;
 
-        this.sprite = game.add.sprite(this.position.x, this.position.y, item.name);
+        this.sprite = game.add.sprite(this.position.x, this.position.y, item.btn);
 
         game.physics.arcade.enable(this.sprite);
 

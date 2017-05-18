@@ -20,10 +20,15 @@ PlayState.preload = function () {
     game.load.image("centre", GLOBAL.DIR.IMAGE + "centre.png");
     game.load.image("case", GLOBAL.DIR.IMAGE + "case.png");
     game.load.image("tower", GLOBAL.DIR.IMAGE + "tower.png");
+    game.load.image("btn-tower", GLOBAL.DIR.IMAGE + "btn-tower.png");
     game.load.image("wall", GLOBAL.DIR.IMAGE + "wall.png");
+    game.load.image("btn-wall", GLOBAL.DIR.IMAGE + "btn-wall.png");
     game.load.image("rock", GLOBAL.DIR.IMAGE + "rock.png");
+    game.load.image("btn-rock", GLOBAL.DIR.IMAGE + "btn-rock.png");
     game.load.image("life", GLOBAL.DIR.IMAGE + "life.png");
+    game.load.image("btn-life", GLOBAL.DIR.IMAGE + "btn-life.png");
     game.load.image("reflect", GLOBAL.DIR.IMAGE + "reflect.png");
+    game.load.image("btn-reflect", GLOBAL.DIR.IMAGE + "btn-reflect.png");
 }
 
 PlayState.create = function () {
@@ -43,16 +48,20 @@ PlayState.create = function () {
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
+    let players = ["Jean-Claude", "Bernard", "Maxime", "Olivier"];
+    let cpt=0;
+
+    //Build bases
     for (let key in Groups.bases) {
         bases[key] = new Base(
             new Vector(
                 Groups.bases[key].centerX,
                 Groups.bases[key].centerY
             )
-        );
+        , players[cpt++]);
     }
 
-    //Build center
+    //Build centers
     for (let key in Groups.centres) {
         centres[key] = new Centre(
             new Vector(
