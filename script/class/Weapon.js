@@ -45,11 +45,28 @@ class Weapon{
         }, this);
     }
 
-    hit(bullet){
+    hit(bullet,tower){
         bullet.rebond++;
         if (bullet.rebond > bullet.maxRebond){
             bullet.kill();
             bullet.rebond = 0;
         }
     }
-}
+
+/*        update() {
+        this.getBullets().forEach(bullet => {
+           game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
+
+           let towers = centres['centre'].towers;
+
+           for (var i = 0; i < towers.length; i++) {
+               game.physics.arcade.collide(bullet, towers[i].sprite, this.hit.bind(this, towers[i]));
+           }
+
+        }, this);
+    }
+
+    hit(a,b, c){
+        console.log(this, a, b, c);
+    }*/
+} 
