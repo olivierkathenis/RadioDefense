@@ -15,18 +15,19 @@ class Centre{
 
         this.angle = 0;
 
+        this.speed = .4;
+
         this.towers = [];
         this.cases = [];
 
         for(let i=0; i < 4; i++){
-            this.towers[i] = new Tower(position, i * 90, -130);
+            this.towers[i] = new Tower(position, i * 90, -130, this.speed);
         }
 
         for(let i=0; i < 4; i++){
-            this.cases[i] = new Case(position, (i * 90) + 45, -130);
+            this.cases[i] = new Case(position, (i * 90) + 45, -130, this.speed);
         }
 
-        this.speed = .4;
     }
 
     update(){

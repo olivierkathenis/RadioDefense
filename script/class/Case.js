@@ -1,5 +1,5 @@
 class Case {
-    constructor(position, angle, offset) {
+    constructor(position, angle, offset, speed = 1) {
 
         this.position = position;
 
@@ -17,7 +17,7 @@ class Case {
         this.sprite.pivot.y = 0;
         this.sprite.angle = this.angle;
 
-        this.speed = .4;
+        this.speed = speed;
     }
 
     turn(direction) {
