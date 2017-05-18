@@ -39,6 +39,7 @@ PlayState.create = function () {
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
+    //Build bases
     for (let key in Groups.bases) {
         bases[key] = new Base(
             new Vector(
@@ -48,6 +49,7 @@ PlayState.create = function () {
         );
     }
 
+    //Build center
     for (let key in Groups.centres) {
         centres[key] = new Centre(
             new Vector(
@@ -55,6 +57,12 @@ PlayState.create = function () {
                 GLOBAL.HALFHEIGHT
             )
         );
+    }
+
+    //Init bases weapons
+    for (let key in bases) {
+        let base = bases[key];
+        base.setWeapon();
     }
 
     // let mur1 = new Mur(300, 300, 'mur');
@@ -81,7 +89,7 @@ PlayState.create = function () {
 
 PlayState.update = function () {
 
-    // game.physics.arcade.collide(car.sprite, layers.collisions);
+    game.physics.arcade.collide(car.sprite, layers.collisions);
     // game.physics.arcade.overlap(car.sprite, flag.sprite, (car_sprite, flag_sprite)=>{
     //
     // });

@@ -26,13 +26,14 @@ class Base {
 
         this.sprite.angle = this.angle;
 
-        this.canon = new Canon(this.position);
-
         this.cases = [];
 
         for(let i=0; i < 6; i++){
             this.cases[i] = new Case(position, (i * 30) + this.angle + 15, 115);
         }
+    }
+    setWeapon(){
+        this.canon = new Canon(this.position);
     }
 
     getLife(damage) {
