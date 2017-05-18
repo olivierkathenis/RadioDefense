@@ -27,7 +27,4 @@ class Base {
     addLife(bonus) {
         this.Maxlife += bonus;
     }
-    getCanon(){
-        return this.canon;
-    }
 }

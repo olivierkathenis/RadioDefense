@@ -58,7 +58,7 @@ PlayState.create = function () {
             bases['base1'].position,
             new Vector(pointer.x, pointer.y)
         );
-        bases['base1'].getCanon().setAngle(angle);
+        bases['base1'].canon.setAngle(angle);
     }, this);
 
 }
@@ -71,18 +71,18 @@ PlayState.update = function () {
     // });
 
     if (game.input.mousePointer.isDown) {
-        bases['base1'].getCanon().shoot()
+        bases['base1'].canon.shoot()
     }
 
     if (cursors.left.isDown) {
-        bases['base1'].getCanon().turn("left");
+        bases['base1'].canon.turn("left");
     }
     if (cursors.right.isDown) {
-        bases['base1'].getCanon().turn("right");
+        bases['base1'].canon.turn("right");
     }
 
     if (spacebar.justDown) {
-        bases['base1'].getCanon().shoot();
+        bases['base1'].canon.shoot();
     }
 }
 
