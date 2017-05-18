@@ -77,13 +77,15 @@ class Weapon {
     }
 
     hitBaseCanon(base, bullet, canonSprite) {
-
+        bullet.kill();
         base.canon.getDamage();
     }
 
     hitBaseItem(base, item, bullet, itemSprite) {
 
         let life = item.getDamage(bullet.damage);
+
+        bullet.kill();
 
         if (!item.immortal && life <= 0) {
             console.log('die');
