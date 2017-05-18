@@ -77,8 +77,7 @@ class Weapon {
     }
 
     hitBaseCanon(base, bullet, canonSprite) {
-        bullet.kill();
-        base.canon.getDamage();
+        //base.canon.getDamage();
     }
 
     hitBaseItem(base, item, bullet, itemSprite) {
