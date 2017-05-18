@@ -6,11 +6,12 @@ class Base {
 
         this.position = position;
 
-
         this.maxlife = 100;
         this.life = this.maxlife;
 
         this.sprite = game.add.sprite(this.position.x, this.position.y, 'base');
+
+        this.sprite.alpha = .3
 
         game.physics.arcade.enable(this.sprite);
 
@@ -20,11 +21,10 @@ class Base {
     }
 
     getLife(damage) {
-        this.Maxlife -= damage;
-        this.Maxlife -= damage;
+        this.maxlife -= damage;
     }
 
     addLife(bonus) {
-        this.Maxlife += bonus;
+        this.maxlife += bonus;
     }
 }

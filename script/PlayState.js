@@ -4,7 +4,7 @@ let map;
 let layers = {};
 let Groups = {};
 let bases = {};
-let center = {};
+let centres = {};
 let cursors;
 let spacebar;
 let canon1;
@@ -33,7 +33,7 @@ PlayState.create = function () {
 
     // map.setCollisionBetween(1, 2000, true, layers.collisions);
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
-    Groups.center = Helper.Phaser.addGroups(['center'], 'objectLayer', map);
+    Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
     for (let key in Groups.bases) {
         bases[key] = new Base(
@@ -44,6 +44,10 @@ PlayState.create = function () {
         );
     }
 
+    // for (let key in Groups.centres) {
+    //     centres[key] = new Centre();
+    // }
+
     // let mur1 = new Mur(300, 300, 'mur');
 
     bases['base1'].getLife(30);
@@ -53,13 +57,13 @@ PlayState.create = function () {
         contour: map.createLayer('contour')
     };
 
-    game.input.addMoveCallback(pointer => {
-        let angle = Helper.degreeTwoPoints(
-            bases['base1'].position,
-            new Vector(pointer.x, pointer.y)
-        );
-        bases['base1'].canon.setAngle(angle);
-    }, this);
+    // game.input.addMoveCallback(pointer => {
+    //     let angle = Helper.degreeTwoPoints(
+    //         bases['base1'].position,
+    //         new Vector(pointer.x, pointer.y)
+    //     );
+    //     bases['base1'].canon.setAngle(angle);
+    // }, this);
 
 }
 
@@ -70,9 +74,9 @@ PlayState.update = function () {
     //
     // });
 
-    if (game.input.mousePointer.isDown) {
-        bases['base1'].canon.shoot()
-    }
+    // if (game.input.mousePointer.isDown) {
+    //     bases['base1'].canon.shoot()
+    // }
 
     if (cursors.left.isDown) {
         bases['base1'].canon.turn("left");
