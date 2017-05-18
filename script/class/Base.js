@@ -11,7 +11,7 @@ class Base {
 
         this.sprite = game.add.sprite(this.position.x, this.position.y, 'base');
 
-        this.sprite.alpha = .3
+        this.sprite.alpha = 1
 
         game.physics.arcade.enable(this.sprite);
 

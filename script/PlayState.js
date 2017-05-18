@@ -16,9 +16,10 @@ PlayState.preload = function () {
     game.load.image("background", GLOBAL.DIR.IMAGE + "bg.png");
     game.load.image("base", GLOBAL.DIR.IMAGE + "base.png");
     game.load.image("canon", GLOBAL.DIR.IMAGE + "canon.png");
-    // game.load.image("mur", GLOBAL.DIR.IMAGE + "muraille-v1.png");
-    // game.load.spritesheet("radiosheets", GLOBAL.DIR.IMAGE + "tileset.png", 16, 20, 0, 0);
     game.load.image("bullet", GLOBAL.DIR.IMAGE + "bullet.png");
+    game.load.image("centre", GLOBAL.DIR.IMAGE + "centre.png");
+    game.load.image("case", GLOBAL.DIR.IMAGE + "case.png");
+    game.load.image("tower", GLOBAL.DIR.IMAGE + "tower.png");
 }
 
 PlayState.create = function () {
@@ -31,7 +32,8 @@ PlayState.create = function () {
     map = game.add.tilemap('map');
     map.addTilesetImage('tileset');
 
-    // map.setCollisionBetween(1, 2000, true, layers.collisions);
+    map.setCollisionBetween(1, 2000, true, layers.collisions);
+
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
@@ -44,9 +46,14 @@ PlayState.create = function () {
         );
     }
 
-    // for (let key in Groups.centres) {
-    //     centres[key] = new Centre();
-    // }
+    for (let key in Groups.centres) {
+        centres[key] = new Centre(
+            new Vector(
+                GLOBAL.HALFWIDTH,
+                GLOBAL.HALFHEIGHT
+            )
+        );
+    }
 
     // let mur1 = new Mur(300, 300, 'mur');
 
@@ -77,6 +84,8 @@ PlayState.update = function () {
     // if (game.input.mousePointer.isDown) {
     //     bases['base1'].canon.shoot()
     // }
+
+    centres['centre'].update();
 
     if (cursors.left.isDown) {
         bases['base1'].canon.turn("left");
