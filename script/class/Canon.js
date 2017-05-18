@@ -1,8 +1,5 @@
 /**
- * Created by Student on 17/05/2017.
- */
-/**
- * Classe pour créer les bases des joueurs
+ * Classe pour créer les canons des différentes bases
  */
 class Canon {
     constructor(position) {
@@ -36,8 +33,12 @@ class Canon {
         Helper.Phaser.drawPoint(this.position);
     }
 
+    /**
+     * fonction pour faire bouger les canons en suivant un angle et une vitesse
+     * @param  {[type]} direction [description]
+     * @return {[type]}           [description]
+     */
     turn(direction) {
-
         switch (direction.toLowerCase()) {
             case 'left':
                 this.setAngle(this.angle - this.speed);
@@ -59,5 +60,15 @@ class Canon {
 
     shoot() {
         this.weapon.fire();
+    }
+
+    /**
+     * fonction pour lister les balles tirées
+     * @return {[type]} [description]
+     */
+    update() {
+        this.weapon.getBullets().forEach(bullet => {
+           game.physics.arcade.collide(bullet, layers.contour);
+        }, this);
     }
 }

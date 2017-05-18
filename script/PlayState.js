@@ -23,6 +23,8 @@ PlayState.preload = function () {
 
 PlayState.create = function () {
 
+    game.world.bounds.setTo(32, 32, GLOBAL.WIDTH - 64, GLOBAL.HEIGHT - 64);
+
     cursors = this.input.keyboard.createCursorKeys();
     spacebar = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -31,7 +33,6 @@ PlayState.create = function () {
     map = game.add.tilemap('map');
     map.addTilesetImage('tileset');
 
-    // map.setCollisionBetween(1, 2000, true, layers.collisions);
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
@@ -56,7 +57,8 @@ PlayState.create = function () {
     layers = {
         contour: map.createLayer('contour')
     };
-
+    
+    map.setCollisionBetween(1, 2000, true, layers.contour);
     // game.input.addMoveCallback(pointer => {
     //     let angle = Helper.degreeTwoPoints(
     //         bases['base1'].position,
@@ -64,6 +66,8 @@ PlayState.create = function () {
     //     );
     //     bases['base1'].canon.setAngle(angle);
     // }, this);
+    
+    // this.weapon.bullets.bounce.setTo(1, 1);
 
 }
 
@@ -78,16 +82,20 @@ PlayState.update = function () {
     //     bases['base1'].canon.shoot()
     // }
 
+    bases['base1'].canon.update();
+
     if (cursors.left.isDown) {
         bases['base1'].canon.turn("left");
     }
     if (cursors.right.isDown) {
         bases['base1'].canon.turn("right");
     }
-
+ 
     if (spacebar.justDown) {
         bases['base1'].canon.shoot();
     }
+
+     
 }
 
 PlayState.render = function () {
