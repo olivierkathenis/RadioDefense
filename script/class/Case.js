@@ -1,5 +1,5 @@
 class Case {
-    constructor(position, angle) {
+    constructor(position, angle, offset) {
 
         this.position = position;
 
@@ -13,7 +13,7 @@ class Case {
 
         this.angle = angle + 0.0000001;
 
-        this.sprite.pivot.x = -130;
+        this.sprite.pivot.x = offset;
         this.sprite.pivot.y = 0;
         this.sprite.angle = this.angle;
 
