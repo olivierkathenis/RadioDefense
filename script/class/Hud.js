@@ -7,8 +7,6 @@ class Hud {
         this.angle = angle;
         this.size = 256;
 
-        console.log(this.angle);
-
         this.buttons = {};
         this.buttonGroups = game.add.group();
 

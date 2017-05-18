@@ -14,6 +14,8 @@ class Canon {
         this.sprite.width = 32;
         this.sprite.height = 32;
 
+        this.sprite.body.immovable = true;
+
         let startAngle = Helper.degreeTwoPoints(
             this.position,
             new Vector(GLOBAL.HALFWIDTH, GLOBAL.HALFHEIGHT)
@@ -58,6 +60,10 @@ class Canon {
 
     shoot() {
         this.weapon.fire();
+    }
+
+    getDamage() {
+        console.log('canon damage');
     }
 
     /**
