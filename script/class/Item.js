@@ -1,12 +1,14 @@
 /**
  * Classe pour créer les différents items de type mur
  */
-class Mur
+class Item
 {
 	constructor(x,y,type)
 	{
-		this.sprite = game.add.sprite(x , y, 'radiosheets');
+		this.sprite = game.add.sprite(x , y, 'candy');
     this.sprite.anchor.set(.5, .5);
+    this.sprite.width = 32;
+    this.sprite.height = 32;
     game.physics.arcade.enable(this.sprite);
     this.Maxlife = 30;
     this.type = type;
