@@ -8,6 +8,8 @@ class Weapon{
         this.weapon.trackSprite(sprite, 20, 0, true);
 
         this.weapon.bullets.setAll("collideWorldBounds", true);
+
+        this.damage = 2;
         
         this.weapon.bulletSpeed = 400;
         this.weapon.bullets.forEach(bullet => {
@@ -17,7 +19,12 @@ class Weapon{
             bullet.body.bounce.setTo(1, 1);
             bullet.maxRebond = 3;
             bullet.rebond = 0;
+            bullet.damage = this.getDamage();
         }, this);
+    }
+
+    getDamage(){
+        return this.damage;
     }
 
     fire(){
@@ -41,6 +48,14 @@ class Weapon{
            for (var i = 0; i < towers.length; i++) {
                game.physics.arcade.collide(bullet, towers[i].sprite, this.hit.bind(this));
            }
+           for(let key in bases){
+               let base =  bases[key];
+               for(let j=0; j < base.boardItems.length; j++){
+                   let item = base.boardItems[j];
+                   game.physics.arcade.collide(bullet, item.sprite, this.hitBaseItem.bind(this, base, item));
+               }
+
+            }
 
         }, this);
     }
@@ -52,21 +67,15 @@ class Weapon{
             bullet.rebond = 0;
         }
     }
+    hitBaseItem(base, item, bullet, itemSprite){
 
-/*        update() {
-        this.getBullets().forEach(bullet => {
-           game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
+        let life = item.getDamage(bullet.damage);
+        
+        console.log(life);
 
-           let towers = centres['centre'].towers;
-
-           for (var i = 0; i < towers.length; i++) {
-               game.physics.arcade.collide(bullet, towers[i].sprite, this.hit.bind(this, towers[i]));
-           }
-
-        }, this);
+        if(!item.immortal && life <= 0){
+            console.log('die');
+            base.removeItem(item);
+        }
     }
-
-    hit(a,b, c){
-        console.log(this, a, b, c);
-    }*/
 } 

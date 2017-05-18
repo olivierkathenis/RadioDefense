@@ -21,7 +21,7 @@ PlayState.preload = function () {
     game.load.image("case", GLOBAL.DIR.IMAGE + "case.png");
     game.load.image("tower", GLOBAL.DIR.IMAGE + "tower.png");
     game.load.image("weeds", GLOBAL.DIR.IMAGE + "weeds.png");
-    game.load.image("candy", GLOBAL.DIR.IMAGE + "candy.png");
+    game.load.image("life", GLOBAL.DIR.IMAGE + "life.png");
 }
 
 PlayState.create = function () {
@@ -66,40 +66,37 @@ PlayState.create = function () {
         base.setWeapon();
     }
 
-    let item1 = new Item(
-        bases['base2'].cases[1].sprite.worldPosition.x,
-        bases['base2'].cases[1].sprite.worldPosition.y,
-        "mur"
-    )
-    let item2 = new Item(
-        bases['base2'].cases[2].sprite.worldPosition.x,
-        bases['base2'].cases[2].sprite.worldPosition.y,
-        "mur"
-    )
-    let item = new Item(
-        bases['base2'].cases[0].sprite.worldPosition.x,
-        bases['base2'].cases[0].sprite.worldPosition.y,
-        "mur"
-    )
-    let item3 = new Item(
-        bases['base2'].cases[3].sprite.worldPosition.x,
-        bases['base2'].cases[3].sprite.worldPosition.y,
-        "mur"
-    )
-    let item4 = new Item(
-        bases['base2'].cases[4].sprite.worldPosition.x,
-        bases['base2'].cases[4].sprite.worldPosition.y,
-        "mur"
-    )
-    let item5 = new Item(
-        bases['base2'].cases[5].sprite.worldPosition.x,
-        bases['base2'].cases[5].sprite.worldPosition.y,
-        "mur"
-    )
+    // let item1 = new Item(
+    //     bases['base2'].cases[1].sprite.worldPosition.x,
+    //     bases['base2'].cases[1].sprite.worldPosition.y,
+    //     "mur"
+    // )
+    // let item2 = new Item(
+    //     bases['base2'].cases[2].sprite.worldPosition.x,
+    //     bases['base2'].cases[2].sprite.worldPosition.y,
+    //     "mur"
+    // )
+    // let item = new Item(
+    //     bases['base2'].cases[0].sprite.worldPosition.x,
+    //     bases['base2'].cases[0].sprite.worldPosition.y,
+    //     "mur"
+    // )
+    // let item3 = new Item(
+    //     bases['base2'].cases[3].sprite.worldPosition.x,
+    //     bases['base2'].cases[3].sprite.worldPosition.y,
+    //     "mur"
+    // )
+    // let item4 = new Item(
+    //     bases['base2'].cases[4].sprite.worldPosition.x,
+    //     bases['base2'].cases[4].sprite.worldPosition.y,
+    //     "mur"
+    // )
+    // let item5 = new Item(
+    //     bases['base2'].cases[5].sprite.worldPosition.x,
+    //     bases['base2'].cases[5].sprite.worldPosition.y,
+    //     "mur"
+    // )
 
-    //console.log(bases['base1'].cases[1].sprite.worldPosition.x);
-    bases['base1'].getLife(30);
-    bases['base2'].getLife(10);
 
     layers = {
         contour: map.createLayer('contour')

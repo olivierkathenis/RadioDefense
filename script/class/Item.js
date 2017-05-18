@@ -1,28 +1,32 @@
 /**
  * Classe pour créer les différents items de type mur
  */
-class Item
-{
-	constructor(x,y,type)
-	{
-		this.sprite = game.add.sprite(x , y, 'candy');
-    this.sprite.anchor.set(.5, .5);
-    this.sprite.width = 32;
-    this.sprite.height = 32;
-    game.physics.arcade.enable(this.sprite);
-    this.Maxlife = 30;
-    this.type = type;
-	}
+class Item {
+    constructor(item) {
 
-	getLife(damage)
-	{
-		this.Maxlife -= damage;
-		console.log(this.Maxlife);
-	}
+        this.life = item.life;
+        this.type = item.name;
+        this.amount = 3;
+        this.immortal = item.IMMORTAL || false;
+    }
 
-	addLife(bonus)
-	{
-		this.Maxlife += bonus;
-		console.log(this.Maxlife);
-	}
+    show(position) {
+        this.sprite = game.add.sprite(position.x, position.y, this.type);
+        this.sprite.anchor.set(.5, .5);
+        this.sprite.width = 32;
+        this.sprite.height = 32;
+        game.physics.arcade.enable(this.sprite);
+        this.sprite.body.immovable = true;
+    }
+
+    getDamage(damage) {
+        return this.life -= damage;
+    }
+    destroy(){
+        this.sprite.destroy();
+    }
+
+    addLife(bonus) {
+        this.life += bonus;
+    }
 }

@@ -29,22 +29,23 @@ class Base {
         this.cases = [];
 
         this.items = {};
+        this.boardItems = [];
+        this.selectedItem = ITEMS.LIFE;
 
         for(let key in ITEMS){
-            this.items[key] = new Item(key)
+            this.items[key] = new Item(ITEMS[key].name);
         }
-
-        console.log(this.items);
-        this.selectedItem = ITEMS.TOUR;
 
         for(let i=0; i < 6; i++){
             this.cases[i] = new Case(position, (i * 30) + this.angle + 15, 115);
-
             this.cases[i].sprite.inputEnabled = true;
             this.cases[i].sprite.input.pixelPerfectOver = true;
             this.cases[i].sprite.input.useHandCursor = true;
             this.cases[i].sprite.events.onInputDown.add(()=>{
-                console.log(this.selectedItem);
+                let item = new Item(this.selectedItem);
+                let position = this.cases[i].sprite.worldPosition;
+                item.show(position);
+                this.boardItems.push(item);
             }, this);
         }
     }
@@ -57,11 +58,23 @@ class Base {
     }
 
     hit(){
-        
+        console.log('Base hited !');
     }
 
     getDamage(damage) {
         this.maxlife -= damage;
+    }
+
+    removeItem(item){
+
+        for(let i=0; i < this.boardItems.length; i++){
+
+            if(this.boardItems[i] === item){
+                item.destroy();
+                this.boardItems.splice(i, 1);
+                break;
+            }
+        }
     }
 
     addLife(bonus) {
