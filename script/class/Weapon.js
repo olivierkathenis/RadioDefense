@@ -11,7 +11,8 @@ class Weapon {
 
         this.damage = 2;
 
-        this.weapon.bulletSpeed = 400;
+        this.weapon.bulletSpeed = 220;
+
         this.weapon.bullets.forEach(bullet => {
             bullet.width = 14;
             bullet.height = 14;
@@ -46,6 +47,8 @@ class Weapon {
         for (let i = 0; i < bullets.length; i++) {
             let bullet = bullets[i];
 
+            game.physics.arcade.collide(bullet, bullets);
+
             game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
 
             let towers = centres['centre'].towers;
@@ -58,6 +61,7 @@ class Weapon {
 
                 let base = bases[key];
 
+                game.physics.arcade.collide(bullet, base.sprite, this.hitBase.bind(this, base));
                 game.physics.arcade.collide(bullet, base.canon.sprite, this.hitBaseCanon.bind(this, base));
 
                 for (let j = 0; j < base.boardItems.length; j++) {
@@ -74,6 +78,10 @@ class Weapon {
             bullet.kill();
             bullet.rebond = 0;
         }
+    }
+
+    hitBase(base, bullet, baseSprite) {
+        base.getDamage(bullet.damage);
     }
 
     hitBaseCanon(base, bullet, canonSprite) {

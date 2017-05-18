@@ -24,7 +24,7 @@ class Canon {
         this.angle = startAngle + 0.0000001;
         this.minAngle = this.angle + 80;
         this.maxAngle = this.angle - 80;
-        this.speed = 3;
+        this.speed = 2;
 
         this.sprite.pivot.x = -120;
         this.sprite.pivot.y = 0;

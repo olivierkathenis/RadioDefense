@@ -19,6 +19,8 @@ class Base {
 
         this.sprite.anchor.set(0.5, 0.5);
 
+        this.sprite.body.immovable = true;
+
         let startAngle = Helper.degreeTwoPoints(
             this.position,
             new Vector(GLOBAL.HALFWIDTH, GLOBAL.HALFHEIGHT)
@@ -90,7 +92,8 @@ class Base {
     }
 
     getDamage(damage) {
-        this.maxlife -= damage;
+        this.life -= damage;
+        this.hud.setLife(this.life);
     }
 
     removeItem(item){

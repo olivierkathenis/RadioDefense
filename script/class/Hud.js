@@ -13,16 +13,29 @@ class Hud {
         this.size = 24;
         this.step = -50;
 
-        let text = game.add.text(position.x, position.y, this.name, {
+        //Life
+        this.lifeText = game.add.text(position.x, position.y, '100%', {
             font: "20px Arial",
-            fill: "#fff",
-            align: "left",
+            fill: "#5D4037",
+            align: "center",
             boundsAlignH: "top",
             boundsAlignV: "top"
         });
-        text.pivot.x = text.width / 2;
-        text.pivot.y = -3;
-        text.angle = this.angle;
+        this.lifeText.pivot.x = this.lifeText.width / 2;
+        this.lifeText.pivot.y = 30;
+        this.lifeText.angle = this.angle;
+
+        //Name
+        this.nameText = game.add.text(position.x, position.y, this.name, {
+            font: "20px Arial",
+            fill: "#fff",
+            align: "center",
+            boundsAlignH: "top",
+            boundsAlignV: "top"
+        });
+        this.nameText.pivot.x = this.nameText.width / 2;
+        this.nameText.pivot.y = -3;
+        this.nameText.angle = this.angle;
 
         //Wall
         let wall = new Button(new Vector(
@@ -63,5 +76,9 @@ class Hud {
 
         //Save buttons
         this.buttons = {wall: wall, rock: rock, life: life, reflect: reflect}
+    }
+
+    setLife(value){
+        this.lifeText.setText(' ' + value + '%');
     }
 }

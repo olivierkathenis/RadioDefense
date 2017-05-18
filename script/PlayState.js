@@ -88,24 +88,24 @@ PlayState.create = function () {
 PlayState.update = function () {
 
     centres['centre'].update();
-    bases['base1'].canon.update();
+    bases['base2'].canon.update();
 
     if (cursors.left.isDown) {
-        bases['base1'].canon.turn("left");
+        bases['base2'].canon.turn("left");
     }
     if (cursors.right.isDown) {
-        bases['base1'].canon.turn("right");
+        bases['base2'].canon.turn("right");
     }
  
     if (spacebar.justDown) {
-        bases['base1'].canon.shoot();
+        bases['base2'].canon.shoot();
     }
 
      
 }
 
 PlayState.render = function () {
-    // game.debug.body(car.sprite);
+    game.debug.body(bases['base2'].canon.sprite);
     // game.debug.cameraInfo(game.camera, 32, 32);
     //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 }
