@@ -67,8 +67,6 @@ class Canon {
      * @return {[type]} [description]
      */
     update() {
-        this.weapon.getBullets().forEach(bullet => {
-           game.physics.arcade.collide(bullet, layers.contour);
-        }, this);
+        this.weapon.update();
     }
 }

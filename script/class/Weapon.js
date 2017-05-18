@@ -29,4 +29,10 @@ class Weapon{
     getBullets(){
         return this.weapon.bullets;
     }
+
+    update() {
+        this.getBullets().forEach(bullet => {
+           game.physics.arcade.collide(bullet, layers.contour);
+        }, this);
+    }
 }
