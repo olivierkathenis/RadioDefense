@@ -33,6 +33,10 @@ class Weapon{
     update() {
         this.getBullets().forEach(bullet => {
            game.physics.arcade.collide(bullet, layers.contour);
+           let towers = centres['centre'].towers;
+           for (var i = 0; i < towers.length; i++) {
+               game.physics.arcade.collide(bullet, towers[i].sprite);
+           }
         }, this);
     }
 }

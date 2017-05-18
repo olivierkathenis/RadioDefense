@@ -17,6 +17,8 @@ class Tower {
         this.sprite.pivot.y = 0;
         this.sprite.angle = this.angle;
 
+        this.sprite.body.immovable = true;
+
         this.speed = .4;
     }
 
