@@ -20,6 +20,7 @@ PlayState.preload = function () {
     game.load.image("centre", GLOBAL.DIR.IMAGE + "centre.png");
     game.load.image("case", GLOBAL.DIR.IMAGE + "case.png");
     game.load.image("tower", GLOBAL.DIR.IMAGE + "tower.png");
+    game.load.image("weeds", GLOBAL.DIR.IMAGE + "weeds.png");
 }
 
 PlayState.create = function () {
