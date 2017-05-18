@@ -39,14 +39,6 @@ PlayState.create = function () {
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
-    for (let key in Groups.centres) {
-        centres[key] = new Centre(
-            new Vector(
-                GLOBAL.HALFWIDTH,
-                GLOBAL.HALFHEIGHT
-            )
-        );
-    }
     for (let key in Groups.bases) {
         bases[key] = new Base(
             new Vector(
@@ -56,6 +48,21 @@ PlayState.create = function () {
         );
     }
 
+    //Build center
+    for (let key in Groups.centres) {
+        centres[key] = new Centre(
+            new Vector(
+                GLOBAL.HALFWIDTH,
+                GLOBAL.HALFHEIGHT
+            )
+        );
+    }
+
+    //Init bases weapons
+    for (let key in bases) {
+        let base = bases[key];
+        base.setWeapon();
+    }
 
     // let mur1 = new Mur(300, 300, 'mur');
 
