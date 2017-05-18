@@ -34,19 +34,10 @@ PlayState.create = function () {
     map = game.add.tilemap('map');
     map.addTilesetImage('tileset');
 
-    map.setCollisionBetween(1, 2000, true, layers.collisions);
+    map.setCollisionBetween(1, 2000, true, layers.contour);
 
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
-
-    for (let key in Groups.bases) {
-        bases[key] = new Base(
-            new Vector(
-                Groups.bases[key].centerX,
-                Groups.bases[key].centerY
-            )
-        );
-    }
 
     for (let key in Groups.centres) {
         centres[key] = new Centre(
@@ -56,6 +47,15 @@ PlayState.create = function () {
             )
         );
     }
+    for (let key in Groups.bases) {
+        bases[key] = new Base(
+            new Vector(
+                Groups.bases[key].centerX,
+                Groups.bases[key].centerY
+            )
+        );
+    }
+
 
     // let mur1 = new Mur(300, 300, 'mur');
 
@@ -93,6 +93,8 @@ PlayState.update = function () {
 
     centres['centre'].update();
     bases['base1'].canon.update();
+
+
 
 
     if (cursors.left.isDown) {
