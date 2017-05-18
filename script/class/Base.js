@@ -5,7 +5,6 @@ class Base {
     constructor(position) {
 
         this.position = position;
-
         this.maxlife = 100;
         this.life = this.maxlife;
 
@@ -32,6 +31,9 @@ class Base {
         this.boardItems = [];
         this.selectedItem = ITEMS.LIFE;
 
+        this.text;
+        this.style = { font: "25px Arial", fill: "#AFB3B3", align:"center",boundsAlignH: "top",boundsAlignV:"top"};
+
         for(let key in ITEMS){
             this.items[key] = new Item(ITEMS[key].name);
         }
@@ -48,6 +50,7 @@ class Base {
                 this.boardItems.push(item);
             }, this);
         }
+         //this.afficherText();
     }
     setWeapon(){
         this.canon = new Canon(this.position);
@@ -77,7 +80,22 @@ class Base {
         }
     }
 
+    setAngle(angle) {
+        if (angle < this.maxAngle || angle > this.minAngle) {
+            return;
+        }
+        this.angle = angle;
+        this.sprite.angle = this.angle;
+    }
+
     addLife(bonus) {
         this.maxlife += bonus;
     }
+
+    afficherVie(){ 
+        this.text = game.add.text(this.position.x, this.position.y, this.life + " %", this.style);
+        this.text.anchor.set( .5, .5);
+        this.text.rotation *= this.angle;
+    }
+       
 }
