@@ -49,6 +49,11 @@ class Base {
             }, this);
         }
     }
+
+    buildHud(){
+        this.hud = new Hud(this.position, this.angle);
+    }
+
     setWeapon(){
         this.canon = new Canon(this.position);
     }
