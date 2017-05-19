@@ -5,6 +5,6 @@ h1{
 	text-align: center;
 }
 #game{
-	margin:0 auto;
-	width: 800px;
+	margin-top: 50px;
+	margin-left: 200px;
 }

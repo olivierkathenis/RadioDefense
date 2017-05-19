@@ -12,9 +12,9 @@ let canon2;
 let text;
 
 PlayState.preload = function () {
-    game.load.tilemap("map", GLOBAL.DIR.IMAGE + "map.json", null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap("map2", GLOBAL.DIR.IMAGE + "map2.json", null, Phaser.Tilemap.TILED_JSON);
     game.load.image("tileset", GLOBAL.DIR.IMAGE + "tileset.png");
-    game.load.image("background", GLOBAL.DIR.IMAGE + "bg.png");
+    game.load.image("background", GLOBAL.DIR.IMAGE + "bg2.png");
     game.load.image("base", GLOBAL.DIR.IMAGE + "base.png");
     game.load.image("canon", GLOBAL.DIR.IMAGE + "canon.png");
     game.load.image("bullet", GLOBAL.DIR.IMAGE + "bullet.png");
@@ -39,17 +39,17 @@ PlayState.create = function () {
     cursors = this.input.keyboard.createCursorKeys();
     spacebar = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    game.add.sprite(-64, -64, 'background');
+    game.add.sprite(-192, -64, 'background');
 
-    map = game.add.tilemap('map');
+    map = game.add.tilemap('map2');
     map.addTilesetImage('tileset');
 
     map.setCollisionBetween(1, 2000, true, layers.contour);
 
-    Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
+    Groups.bases = Helper.Phaser.addGroups(['base1', 'base2'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
-    let players = ["Jean-Claude", "Bernard", "Maxime", "Olivier"];
+    let players = ["Jean-Claude", "Bernard"];
     let cpt=0;
 
     //Build bases

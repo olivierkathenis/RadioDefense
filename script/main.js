@@ -1,5 +1,5 @@
 const GLOBAL = {
-    WIDTH: 864,
+    WIDTH: 1536,
     HEIGHT: 864,
     DIR: {
         IMAGE: './assets/img/'
