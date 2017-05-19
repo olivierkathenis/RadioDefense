@@ -2,7 +2,9 @@
  * Classe pour créer les bases des joueurs
  */
 class Base {
-    constructor(position) {
+    constructor(position, name) {
+
+        this.name = name || "none";
 
         this.position = position;
         this.maxlife = 100;
@@ -15,6 +17,8 @@ class Base {
         game.physics.arcade.enable(this.sprite);
 
         this.sprite.anchor.set(0.5, 0.5);
+
+        this.sprite.body.immovable = true;
 
         let startAngle = Helper.degreeTwoPoints(
             this.position,
@@ -44,14 +48,40 @@ class Base {
             this.cases[i].sprite.input.pixelPerfectOver = true;
             this.cases[i].sprite.input.useHandCursor = true;
             this.cases[i].sprite.events.onInputDown.add(()=>{
-                let item = new Item(this.selectedItem);
-                let position = this.cases[i].sprite.worldPosition;
-                item.show(position);
+
+                if(!this.cases[i].enable) return;
+
+                this.cases[i].setDisable();
+
+                let item = new Item(this.selectedItem, i);
+
+                item.show(this.cases[i].sprite.worldPosition, this.cases[i].angle);
+
                 this.boardItems.push(item);
             }, this);
         }
          //this.afficherText();
     }
+
+    buildHud(){
+
+        this.hud = new Hud(this.name, this.position, this.angle);
+
+        //Button click
+        for (let key in this.hud.buttons) {
+            let button = this.hud.buttons[key];
+
+            button.sprite.inputEnabled = true;
+            button.sprite.input.pixelPerfectOver = true;
+            button.sprite.input.useHandCursor = true;
+            button.sprite.events.onInputDown.add(() => {
+                console.log(this.name, '[click]', button.name);
+
+                this.selectedItem = ITEMS[button.type];
+            }, this);
+        }
+    }
+
     setWeapon(){
         this.canon = new Canon(this.position);
     }
@@ -65,7 +95,8 @@ class Base {
     }
 
     getDamage(damage) {
-        this.maxlife -= damage;
+        this.life -= damage;
+        this.hud.setLife(this.life);
     }
 
     removeItem(item){
@@ -73,6 +104,7 @@ class Base {
         for(let i=0; i < this.boardItems.length; i++){
 
             if(this.boardItems[i] === item){
+                this.cases[item.caseIndex].setEnable();
                 item.destroy();
                 this.boardItems.splice(i, 1);
                 break;

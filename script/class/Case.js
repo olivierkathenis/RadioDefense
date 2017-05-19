@@ -18,6 +18,8 @@ class Case {
         this.sprite.angle = this.angle;
 
         this.speed = speed;
+
+        this.enable = true;
     }
 
     turn(direction) {
@@ -39,5 +41,11 @@ class Case {
         }
         this.angle = angle;
         this.sprite.angle = this.angle;
+    }
+    setEnable(){
+        this.enable = true;
+    }
+    setDisable(){
+        this.enable = false;
     }
 }

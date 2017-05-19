@@ -21,8 +21,15 @@ PlayState.preload = function () {
     game.load.image("centre", GLOBAL.DIR.IMAGE + "centre.png");
     game.load.image("case", GLOBAL.DIR.IMAGE + "case.png");
     game.load.image("tower", GLOBAL.DIR.IMAGE + "tower.png");
-    game.load.image("weeds", GLOBAL.DIR.IMAGE + "weeds.png");
+    game.load.image("btn-tower", GLOBAL.DIR.IMAGE + "btn-tower.png");
+    game.load.image("wall", GLOBAL.DIR.IMAGE + "wall.png");
+    game.load.image("btn-wall", GLOBAL.DIR.IMAGE + "btn-wall.png");
+    game.load.image("rock", GLOBAL.DIR.IMAGE + "rock.png");
+    game.load.image("btn-rock", GLOBAL.DIR.IMAGE + "btn-rock.png");
     game.load.image("life", GLOBAL.DIR.IMAGE + "life.png");
+    game.load.image("btn-life", GLOBAL.DIR.IMAGE + "btn-life.png");
+    game.load.image("reflect", GLOBAL.DIR.IMAGE + "reflect.png");
+    game.load.image("btn-reflect", GLOBAL.DIR.IMAGE + "btn-reflect.png");
 }
 
 PlayState.create = function () {
@@ -42,16 +49,20 @@ PlayState.create = function () {
     Groups.bases = Helper.Phaser.addGroups(['base1', 'base2', 'base3', 'base4'], 'objectLayer', map);
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
+    let players = ["Jean-Claude", "Bernard", "Maxime", "Olivier"];
+    let cpt=0;
+
+    //Build bases
     for (let key in Groups.bases) {
         bases[key] = new Base(
             new Vector(
                 Groups.bases[key].centerX,
                 Groups.bases[key].centerY
             )
-        );
+        , players[cpt++]);
     }
 
-    //Build center
+    //Build centers
     for (let key in Groups.centres) {
         centres[key] = new Centre(
             new Vector(
@@ -61,6 +72,7 @@ PlayState.create = function () {
         );
     }
 
+<<<<<<< HEAD
     //Init bases weapons
     for (let key in bases) {
         let base = bases[key];
@@ -100,30 +112,41 @@ PlayState.create = function () {
     // )
 
 
+=======
+>>>>>>> a7dd58240b09a9f8aa6ebc8bd27a124281152158
     layers = {
         contour: map.createLayer('contour')
     };
     
     map.setCollisionBetween(1, 2000, true, layers.contour);
 
+<<<<<<< HEAD
    
     
+=======
+    //Init bases weapons
+    for (let key in bases) {
+        let base = bases[key];
+        base.setWeapon();
+        base.buildHud();
+    }
+>>>>>>> a7dd58240b09a9f8aa6ebc8bd27a124281152158
 }
 
 PlayState.update = function () {
 
     centres['centre'].update();
-    bases['base1'].canon.update();
+    bases['base2'].canon.update();
 
     if (cursors.left.isDown) {
-        bases['base1'].canon.turn("left");
+        bases['base2'].canon.turn("left");
     }
     if (cursors.right.isDown) {
-        bases['base1'].canon.turn("right");
+        bases['base2'].canon.turn("right");
     }
  
     if (spacebar.justDown) {
-        bases['base1'].canon.shoot();
+        bases['base2'].canon.shoot();
     }
     bases['base1'].afficherVie();
     bases['base2'].afficherVie();
@@ -133,7 +156,7 @@ PlayState.update = function () {
 }
 
 PlayState.render = function () {
-    // game.debug.body(car.sprite);
+    game.debug.body(bases['base2'].canon.sprite);
     // game.debug.cameraInfo(game.camera, 32, 32);
     //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 }
