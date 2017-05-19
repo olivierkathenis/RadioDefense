@@ -26,6 +26,8 @@ class Tower {
 
         this.sprite.body.immovable = true;
 
+        this.sprite.body.bounce.set(1);
+
         this.speed = speed;
     }
 

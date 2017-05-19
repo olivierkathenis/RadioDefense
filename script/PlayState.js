@@ -30,9 +30,12 @@ PlayState.preload = function () {
     game.load.image("btn-life", GLOBAL.DIR.IMAGE + "btn-life.png");
     game.load.image("reflect", GLOBAL.DIR.IMAGE + "reflect.png");
     game.load.image("btn-reflect", GLOBAL.DIR.IMAGE + "btn-reflect.png");
+    game.load.image("explosion", GLOBAL.DIR.IMAGE + "explosion.png");
 }
 
 PlayState.create = function () {
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.world.bounds.setTo(32, 32, GLOBAL.WIDTH - 64, GLOBAL.HEIGHT - 64);
 
@@ -72,38 +75,6 @@ PlayState.create = function () {
         );
     }
 
-
-    // let item1 = new Item(
-    //     bases['base2'].cases[1].sprite.worldPosition.x,
-    //     bases['base2'].cases[1].sprite.worldPosition.y,
-    //     "mur"
-    // )
-    // let item2 = new Item(
-    //     bases['base2'].cases[2].sprite.worldPosition.x,
-    //     bases['base2'].cases[2].sprite.worldPosition.y,
-    //     "mur"
-    // )
-    // let item = new Item(
-    //     bases['base2'].cases[0].sprite.worldPosition.x,
-    //     bases['base2'].cases[0].sprite.worldPosition.y,
-    //     "mur"
-    // )
-    // let item3 = new Item(
-    //     bases['base2'].cases[3].sprite.worldPosition.x,
-    //     bases['base2'].cases[3].sprite.worldPosition.y,
-    //     "mur"
-    // )
-    // let item4 = new Item(
-    //     bases['base2'].cases[4].sprite.worldPosition.x,
-    //     bases['base2'].cases[4].sprite.worldPosition.y,
-    //     "mur"
-    // )
-    // let item5 = new Item(
-    //     bases['base2'].cases[5].sprite.worldPosition.x,
-    //     bases['base2'].cases[5].sprite.worldPosition.y,
-    //     "mur"
-    // )
-
     layers = {
         contour: map.createLayer('contour')
     };
@@ -135,23 +106,33 @@ PlayState.update = function () {
     if (spacebar.justDown) {
         bases['base2'].canon.shoot();
     }
-    // bases['base1'].afficherVie();
-    // bases['base2'].afficherVie();
-    // bases['base3'].afficherVie();
-    // bases['base4'].afficherVie();
      
 }
 
 PlayState.render = function () {
 
-    let towers = centres['centre'].towers;
+    // let towers = centres['centre'].towers;
 
-    for (let key in towers) {
-        let sprite = towers[key].sprite;
-        game.debug.body(sprite);
-    }
+    // for (let key in towers) {
+    //     let sprite = towers[key].sprite;
+    //     game.debug.body(sprite);
+    // }
 
-    game.debug.body(bases['base2'].canon.sprite);
+    // for (let key in bases) {
+    //     let base = bases[key];
+    //     let bullets = base.canon.weapon.getBullets();
+    //
+    //     for (let key in bullets) {
+    //         game.debug.body(bullets[key]);
+    //     }
+    // }
+
+    // for (let key in bases) {
+    //     let base = bases[key];
+    //     game.debug.body(base.sprite);
+    // }
+
+    // game.debug.body(bases['base2'].canon.sprite);
     // game.debug.cameraInfo(game.camera, 32, 32);
     //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 }
