@@ -27,6 +27,18 @@ class Centre{
             this.cases[i] = new Case(position, (i * 90) + 45, -130, this.speed);
         }
 
+        //Button click
+        for(let i=0; i < this.cases.length; i++){
+            let c = this.cases[i];
+
+            c.sprite.inputEnabled = true;
+            c.sprite.input.pixelPerfectOver = true;
+            c.sprite.input.useHandCursor = true;
+            c.sprite.events.onInputDown.add(() => {
+                console.log('click case', i);
+            }, this);
+        }
+
     }
 
     update(){
