@@ -14,12 +14,12 @@ class Canon {
         this.sprite.width = 32;
         this.sprite.height = 32;
 
-        this.sprite.radius = this.sprite.width /2 - 4;
-
-        this.sprite.body.setCircle(this.sprite.radius,
-            (-this.sprite.radius + (0.5 * this.sprite.width) / this.sprite.scale.x),
-            (-this.sprite.radius + (0.5 * this.sprite.height) / this.sprite.scale.y)
-        );
+        // this.sprite.radius = this.sprite.width /2 - 4;
+        //
+        // this.sprite.body.setCircle(this.sprite.radius,
+        //     (-this.sprite.radius + (0.5 * this.sprite.width) / this.sprite.scale.x),
+        //     (-this.sprite.radius + (0.5 * this.sprite.height) / this.sprite.scale.y)
+        // );
 
         this.sprite.body.immovable = true;
 

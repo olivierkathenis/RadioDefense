@@ -11,7 +11,7 @@ class Weapon {
 
         this.damage = 2;
 
-        this.weapon.bulletSpeed = 350;
+        this.weapon.bulletSpeed = 800;
 
         this.weapon.bullets.forEach(bullet => {
             bullet.width = 14;
@@ -71,7 +71,6 @@ class Weapon {
         for (let i = 0; i < bullets.length; i++) {
             let bullet = bullets[i];
 
-            game.physics.arcade.collide(bullet, bullets);
             game.physics.arcade.collide(bullet, layers.contour, this.hitBounds.bind(this));
 
             let towers = centres['centre'].towers;
@@ -98,13 +97,13 @@ class Weapon {
     hitBounds(bullet) {
         bullet.rebond++;
         if (bullet.rebond > bullet.maxRebond) {
+            this.particleBurst(bullet.position);
             bullet.kill();
             bullet.rebond = 0;
         }
     }
 
     hitCenterTower(bullet) {
-        console.log(bullet);
         this.particleBurst(bullet.position);
         bullet.kill();
     }
