@@ -72,7 +72,7 @@ PlayState.create = function () {
         );
     }
 
-<<<<<<< HEAD
+
     //Init bases weapons
     for (let key in bases) {
         let base = bases[key];
@@ -112,25 +112,21 @@ PlayState.create = function () {
     // )
 
 
-=======
->>>>>>> a7dd58240b09a9f8aa6ebc8bd27a124281152158
+
     layers = {
         contour: map.createLayer('contour')
     };
     
     map.setCollisionBetween(1, 2000, true, layers.contour);
 
-<<<<<<< HEAD
-   
-    
-=======
+
     //Init bases weapons
     for (let key in bases) {
         let base = bases[key];
         base.setWeapon();
         base.buildHud();
     }
->>>>>>> a7dd58240b09a9f8aa6ebc8bd27a124281152158
+
 }
 
 PlayState.update = function () {
@@ -148,10 +144,10 @@ PlayState.update = function () {
     if (spacebar.justDown) {
         bases['base2'].canon.shoot();
     }
-    bases['base1'].afficherVie();
-    bases['base2'].afficherVie();
-    bases['base3'].afficherVie();
-    bases['base4'].afficherVie();
+    // bases['base1'].afficherVie();
+    // bases['base2'].afficherVie();
+    // bases['base3'].afficherVie();
+    // bases['base4'].afficherVie();
      
 }
 

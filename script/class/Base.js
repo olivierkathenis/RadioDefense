@@ -60,7 +60,6 @@ class Base {
                 this.boardItems.push(item);
             }, this);
         }
-         //this.afficherText();
     }
 
     buildHud(){
