@@ -47,8 +47,6 @@ class Weapon {
         for (let i = 0; i < bullets.length; i++) {
             let bullet = bullets[i];
 
-            game.physics.arcade.collide(bullet, bullets);
-
             game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
 
             let towers = centres['centre'].towers;

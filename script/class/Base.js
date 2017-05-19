@@ -85,9 +85,6 @@ class Base {
         this.canon = new Canon(this.position);
     }
 
-    newItem(){
-        this.canon = new Canon(this.position);
-    }
 
     hit(){
         console.log('Base hited !');

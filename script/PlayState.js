@@ -73,13 +73,6 @@ PlayState.create = function () {
     }
 
 
-    //Init bases weapons
-    for (let key in bases) {
-        let base = bases[key];
-        base.setWeapon();
-    }
-
-
     // let item1 = new Item(
     //     bases['base2'].cases[1].sprite.worldPosition.x,
     //     bases['base2'].cases[1].sprite.worldPosition.y,
@@ -110,8 +103,6 @@ PlayState.create = function () {
     //     bases['base2'].cases[5].sprite.worldPosition.y,
     //     "mur"
     // )
-
-
 
     layers = {
         contour: map.createLayer('contour')
@@ -152,7 +143,7 @@ PlayState.update = function () {
 }
 
 PlayState.render = function () {
-    game.debug.body(bases['base2'].canon.sprite);
+    // game.debug.body(bases['base2'].canon.sprite);
     // game.debug.cameraInfo(game.camera, 32, 32);
     //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 }
