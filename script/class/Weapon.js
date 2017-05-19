@@ -17,12 +17,20 @@ class Weapon {
             bullet.width = 14;
             bullet.height = 14;
             bullet.body.collideWorldBounds = true;
-            bullet.body.bounce.setTo(1, 1);
-            bullet.body.allowRotation = true;
+            bullet.body.bounce.set(1);
             bullet.maxRebond = 1;
             bullet.rebond = 0;
             bullet.damage = this.getDamage();
+            bullet.radius = bullet.width / 2;
+            bullet.body.setCircle(bullet.radius,
+                (-bullet.radius + (0.5 * bullet.width) / bullet.scale.x),
+                (-bullet.radius + (0.5 * bullet.height) / bullet.scale.y)
+            );
         }, this);
+
+        this.emitter = game.add.emitter(50, 50, 100);
+
+        this.emitter.makeParticles('explosion');
     }
 
     getDamage() {
@@ -31,6 +39,21 @@ class Weapon {
 
     fire() {
         this.weapon.fire();
+    }
+
+    particleBurst(position) {
+        this.emitter.x = position.x;
+        this.emitter.y = position.y;
+
+        this.emitter.start(true, 100, null, 20);
+
+        //  And 2 seconds later we'll destroy the emitter
+        // game.time.events.add(200, this.destroyEmitter, this);
+
+    }
+
+    destroyEmitter() {
+        this.emitter.destroy();
     }
 
     /**
@@ -49,12 +72,12 @@ class Weapon {
             let bullet = bullets[i];
 
             game.physics.arcade.collide(bullet, bullets);
-            game.physics.arcade.collide(bullet, layers.contour, this.hit.bind(this));
+            game.physics.arcade.collide(bullet, layers.contour, this.hitBounds.bind(this));
 
             let towers = centres['centre'].towers;
 
             for (var j = 0; j < towers.length; j++) {
-                game.physics.arcade.collide(bullet, towers[j].sprite, this.hit.bind(this));
+                game.physics.arcade.collide(bullet, towers[j].sprite, this.hitCenterTower.bind(this));
             }
 
             for (let key in bases) {
@@ -72,12 +95,18 @@ class Weapon {
         }
     }
 
-    hit(bullet) {
+    hitBounds(bullet) {
         bullet.rebond++;
         if (bullet.rebond > bullet.maxRebond) {
             bullet.kill();
             bullet.rebond = 0;
         }
+    }
+
+    hitCenterTower(bullet) {
+        console.log(bullet);
+        this.particleBurst(bullet.position);
+        bullet.kill();
     }
 
     hitBase(base, bullet, baseSprite) {

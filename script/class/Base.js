@@ -18,6 +18,12 @@ class Base {
 
         this.sprite.anchor.set(0.5, 0.5);
 
+        this.sprite.radius = this.sprite.width / 2;
+        this.sprite.body.setCircle(this.sprite.radius,
+            (-this.sprite.radius + (0.5 * this.sprite.width) / this.sprite.scale.x),
+            (-this.sprite.radius + (0.5 * this.sprite.height) / this.sprite.scale.y)
+        );
+
         this.sprite.body.immovable = true;
 
         let startAngle = Helper.degreeTwoPoints(
