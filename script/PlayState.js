@@ -53,7 +53,7 @@ PlayState.create = function () {
     Groups.centres = Helper.Phaser.addGroups(['centre'], 'objectLayer', map);
 
     let players = ["Jean-Claude", "Bernard", "Maxime", "Olivier"];
-    let cpt=0;
+    let cpt = 0;
 
     //Build bases
     for (let key in Groups.bases) {
@@ -62,7 +62,7 @@ PlayState.create = function () {
                 Groups.bases[key].centerX,
                 Groups.bases[key].centerY
             )
-        , players[cpt++]);
+            , players[cpt++]);
     }
 
     //Build centers
@@ -78,7 +78,7 @@ PlayState.create = function () {
     layers = {
         contour: map.createLayer('contour')
     };
-    
+
     map.setCollisionBetween(1, 2000, true, layers.contour);
 
 
@@ -102,11 +102,11 @@ PlayState.update = function () {
     if (cursors.right.isDown) {
         bases['base2'].canon.turn("right");
     }
- 
+
     if (spacebar.justDown) {
         bases['base2'].canon.shoot();
     }
-     
+
 }
 
 PlayState.render = function () {

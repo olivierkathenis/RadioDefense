@@ -1,5 +1,5 @@
-class Centre{
-    constructor(position){
+class Centre {
+    constructor(position) {
 
         this.position = position;
 
@@ -22,16 +22,16 @@ class Centre{
         this.selectedItem = ITEMS.LIFE;
 
 
-        for(let i=0; i < 4; i++){
+        for (let i = 0; i < 4; i++) {
             this.towers[i] = new Tower(position, i * 90, -130, this.speed);
         }
 
-        for(let i=0; i < 4; i++){
+        for (let i = 0; i < 4; i++) {
             this.cases[i] = new Case(position, (i * 90) + 45, -130, this.speed);
         }
 
         //Button click
-        for(let i=0; i < this.cases.length; i++){
+        for (let i = 0; i < this.cases.length; i++) {
             let c = this.cases[i];
 
             c.sprite.inputEnabled = true;
@@ -50,17 +50,17 @@ class Centre{
 
     }
 
-    update(){
+    update() {
         this.turn('left')
 
-        for(let i=0; i < this.towers.length; i++){
+        for (let i = 0; i < this.towers.length; i++) {
             this.towers[i].turn('left')
         }
-        for(let i=0; i < this.cases.length; i++){
+        for (let i = 0; i < this.cases.length; i++) {
             this.cases[i].turn('left')
         }
-        for(let i=0; i < this.centerBoardItems.length; i++){
-           this.centerBoardItems[i].turn('left')
+        for (let i = 0; i < this.centerBoardItems.length; i++) {
+            this.centerBoardItems[i].turn('left')
         }
 
     }
@@ -69,11 +69,11 @@ class Centre{
 
         switch (direction.toLowerCase()) {
             case 'left':
-            this.setAngle(this.angle - this.speed);
-            break;
+                this.setAngle(this.angle - this.speed);
+                break;
             case 'right':
-            this.setAngle(this.angle + this.speed);
-            break;
+                this.setAngle(this.angle + this.speed);
+                break;
         }
         this.sprite.angle = this.angle;
     }

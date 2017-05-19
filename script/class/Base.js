@@ -42,20 +42,20 @@ class Base {
         this.selectedItem = ITEMS.LIFE;
 
         this.text;
-        this.style = { font: "25px Arial", fill: "#AFB3B3", align:"center",boundsAlignH: "top",boundsAlignV:"top"};
+        this.style = {font: "25px Arial", fill: "#AFB3B3", align: "center", boundsAlignH: "top", boundsAlignV: "top"};
 
-        for(let key in ITEMS){
+        for (let key in ITEMS) {
             this.items[key] = new Item(ITEMS[key].name);
         }
 
-        for(let i=0; i < 6; i++){
+        for (let i = 0; i < 6; i++) {
             this.cases[i] = new Case(position, (i * 30) + this.angle + 15, 115);
             this.cases[i].sprite.inputEnabled = true;
             this.cases[i].sprite.input.pixelPerfectOver = true;
             this.cases[i].sprite.input.useHandCursor = true;
-            this.cases[i].sprite.events.onInputDown.add(()=>{
+            this.cases[i].sprite.events.onInputDown.add(() => {
 
-                if(!this.cases[i].enable) return;
+                if (!this.cases[i].enable) return;
 
                 this.cases[i].setDisable();
 
@@ -68,7 +68,7 @@ class Base {
         }
     }
 
-    buildHud(){
+    buildHud() {
 
         this.hud = new Hud(this.name, this.position, this.angle);
 
@@ -87,12 +87,12 @@ class Base {
         }
     }
 
-    setWeapon(){
+    setWeapon() {
         this.canon = new Canon(this.position);
     }
 
 
-    hit(){
+    hit() {
         console.log('Base hited !');
     }
 
@@ -101,11 +101,11 @@ class Base {
         this.hud.setLife(this.life);
     }
 
-    removeItem(item){
+    removeItem(item) {
 
-        for(let i=0; i < this.boardItems.length; i++){
+        for (let i = 0; i < this.boardItems.length; i++) {
 
-            if(this.boardItems[i] === item){
+            if (this.boardItems[i] === item) {
                 this.cases[item.caseIndex].setEnable();
                 item.destroy();
                 this.boardItems.splice(i, 1);
@@ -126,10 +126,10 @@ class Base {
         this.maxlife += bonus;
     }
 
-    afficherVie(){ 
+    afficherVie() {
         this.text = game.add.text(this.position.x, this.position.y, this.life + " %", this.style);
-        this.text.anchor.set( .5, .5);
+        this.text.anchor.set(.5, .5);
         this.text.rotation *= this.angle;
     }
-       
+
 }
