@@ -143,7 +143,15 @@ PlayState.update = function () {
 }
 
 PlayState.render = function () {
-    // game.debug.body(bases['base2'].canon.sprite);
+
+    let towers = centres['centre'].towers;
+
+    for (let key in towers) {
+        let sprite = towers[key].sprite;
+        game.debug.body(sprite);
+    }
+
+    game.debug.body(bases['base2'].canon.sprite);
     // game.debug.cameraInfo(game.camera, 32, 32);
     //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 }

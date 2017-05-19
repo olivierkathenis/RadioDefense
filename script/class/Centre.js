@@ -5,9 +5,10 @@ class Centre{
 
         this.sprite = game.add.sprite(this.position.x, this.position.y, 'centre');
 
+        game.physics.arcade.enable(this.sprite);
+
         this.sprite.alpha = 1
 
-        game.physics.arcade.enable(this.sprite);
 
         this.sprite.anchor.set(0.5, 0.5);
 
