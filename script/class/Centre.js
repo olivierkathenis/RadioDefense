@@ -18,6 +18,9 @@ class Centre{
 
         this.towers = [];
         this.cases = [];
+        this.centerBoardItems = [];
+        this.selectedItem = ITEMS.LIFE;
+
 
         for(let i=0; i < 4; i++){
             this.towers[i] = new Tower(position, i * 90, -130, this.speed);
@@ -34,8 +37,14 @@ class Centre{
             c.sprite.inputEnabled = true;
             c.sprite.input.pixelPerfectOver = true;
             c.sprite.input.useHandCursor = true;
+
             c.sprite.events.onInputDown.add(() => {
                 console.log('click case', i);
+                let item = new Item(this.selectedItem, i);
+                //item.show(position, i * 90, -130, this.speed);
+                item.show(position, this.cases[i].angle, -125, this.speed);
+                this.centerBoardItems.push(item);
+                console.log(item);
             }, this);
         }
 
@@ -50,17 +59,21 @@ class Centre{
         for(let i=0; i < this.cases.length; i++){
             this.cases[i].turn('left')
         }
+        for(let i=0; i < this.centerBoardItems.length; i++){
+           this.centerBoardItems[i].turn('left')
+        }
+
     }
 
     turn(direction) {
 
         switch (direction.toLowerCase()) {
             case 'left':
-                this.setAngle(this.angle - this.speed);
-                break;
+            this.setAngle(this.angle - this.speed);
+            break;
             case 'right':
-                this.setAngle(this.angle + this.speed);
-                break;
+            this.setAngle(this.angle + this.speed);
+            break;
         }
         this.sprite.angle = this.angle;
     }
